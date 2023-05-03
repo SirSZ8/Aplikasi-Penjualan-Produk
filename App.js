@@ -14,12 +14,17 @@ import DATA from "./DATA";
 import DATA_SERVER from "./DATA_SERVER";
 import FormSignin from "./src/widgets/FormSignin";
 import { ScrollView } from "react-native";
+import { Provider as PaperProvider } from "react-native-paper";
+import ScreenProductDetail from "./src/screens/products/ScreenProductDetail";
 
 export default function App() {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <FormSignin />
-    </ScrollView>
+    <PaperProvider>
+      <ScreenProductDetail />
+    </PaperProvider>
+    // <ScrollView contentContainerStyle={styles.container}>
+    //   <FormSignin />
+    // </ScrollView>
   );
 }
 
@@ -37,7 +42,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexGrow: 1,
     justifyContent: "center",
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
     // alignItems: "center",
     // flexDirection: "row",
     // justifyContent: "center",

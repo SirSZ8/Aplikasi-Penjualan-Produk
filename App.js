@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import {
   StyleSheet,
@@ -13,18 +12,39 @@ import ComponentPresentation from "./src/widgets/ComponentPresentation";
 import DATA from "./DATA";
 import DATA_SERVER from "./DATA_SERVER";
 import FormSignin from "./src/widgets/FormSignin";
-import { ScrollView } from "react-native";
+import { ScrollView, StatusBar } from "react-native";
 import { Provider as PaperProvider } from "react-native-paper";
 import ScreenProductDetail from "./src/screens/products/ScreenProductDetail";
+import ScreenPenjualanCreate from "./src/screens/penjualan/ScreenPenjualanCreate";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import ScreenPenjualanSuccess from "./src/screens/penjualan/ScreenPenjualanSuccess";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <PaperProvider>
-      <ScreenProductDetail />
-    </PaperProvider>
-    // <ScrollView contentContainerStyle={styles.container}>
-    //   <FormSignin />
-    // </ScrollView>
+    <>
+      <StatusBar
+        backgroundColor="#fff"
+        barStyle={"dark-content"}
+        // showHideTransition={statusBarTransition}
+        // hidden={hidden}
+        animated={true}
+      />
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen
+            name="ScreenPenjualanCreate"
+            component={ScreenPenjualanCreate}
+          />
+          <Stack.Screen
+            name="ScreenPenjualanSuccess"
+            component={ScreenPenjualanSuccess}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 
